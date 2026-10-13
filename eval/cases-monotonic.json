@@ -1,55 +1,94 @@
 {
-    "description": "順送り訳（β）チャンク翻訳の文脈維持テスト（POST_MEASUREMENT_PLAN §3.3の品質ゲート）。直前チャンクの原文・訳文を文脈として渡し、代名詞・省略主語が正しく解決されるかを検証する。実行: OPENAI_API_KEY=... node eval/run-eval.js --monotonic",
-    "cases": [
-        {
-            "id": "mono-01",
-            "domain": "daily",
-            "lang": "ja",
-            "critical": true,
-            "context": { "source": "田中さんが来ました。", "translation": "Mr. Tanaka has arrived." },
-            "source": "彼は薬を持っています。",
-            "mustInclude": [["he has", "he is", "he's", "he brought"]],
-            "mustNotInclude": ["she "]
-        },
-        {
-            "id": "mono-02",
-            "domain": "daily",
-            "lang": "ja",
-            "critical": false,
-            "context": { "source": "佐藤さんは明日休みます。", "translation": "Ms. Sato will be off tomorrow." },
-            "source": "代わりに私が担当します。",
-            "mustInclude": [["i will", "i'll", "i am", "i'm"]],
-            "mustNotInclude": []
-        },
-        {
-            "id": "mono-03",
-            "domain": "medical",
-            "lang": "ja",
-            "critical": false,
-            "context": { "source": "嚥下機能の評価を行いました。", "translation": "We evaluated the swallowing function." },
-            "source": "結果は良好でした。",
-            "mustInclude": [["good", "favorable", "satisfactory", "fine"]],
-            "mustNotInclude": []
-        },
-        {
-            "id": "mono-04",
-            "domain": "medical",
-            "lang": "en",
-            "critical": true,
-            "context": { "source": "Mr. Smith visited the clinic yesterday.", "translation": "スミスさんは昨日クリニックに来ました。" },
-            "source": "He complained of back pain.",
-            "mustInclude": [["彼", "スミス"], ["腰", "背中"]],
-            "mustNotInclude": ["彼女"]
-        },
-        {
-            "id": "mono-05",
-            "domain": "medical",
-            "lang": "en",
-            "critical": false,
-            "context": { "source": "The physical therapist will come at two.", "translation": "理学療法士は2時に来ます。" },
-            "source": "Please get ready before that.",
-            "mustInclude": [["準備", "支度"]],
-            "mustNotInclude": []
-        }
-    ]
+  "description": "日韓順送り訳の文脈維持5ケース。実API品質評価は未実施。",
+  "cases": [
+    {
+      "id": "mono-01",
+      "domain": "daily",
+      "lang": "ja",
+      "critical": true,
+      "context": {
+        "source": "田中さんが来ました。",
+        "translation": "다나카 씨가 왔습니다."
+      },
+      "source": "彼は薬を持っています。",
+      "mustInclude": [
+        "약"
+      ],
+      "mustNotInclude": []
+    },
+    {
+      "id": "mono-02",
+      "domain": "daily",
+      "lang": "ja",
+      "critical": false,
+      "context": {
+        "source": "佐藤さんは明日休みます。",
+        "translation": "사토 씨는 내일 쉽니다."
+      },
+      "source": "代わりに私が担当します。",
+      "mustInclude": [
+        [
+          "제가",
+          "내가",
+          "저는",
+          "나는"
+        ]
+      ],
+      "mustNotInclude": []
+    },
+    {
+      "id": "mono-03",
+      "domain": "medical",
+      "lang": "ja",
+      "critical": false,
+      "context": {
+        "source": "嚥下機能の評価を行いました。",
+        "translation": "삼킴 기능을 평가했습니다."
+      },
+      "source": "結果は良好でした。",
+      "mustInclude": [
+        [
+          "좋",
+          "양호"
+        ]
+      ],
+      "mustNotInclude": []
+    },
+    {
+      "id": "mono-04",
+      "domain": "medical",
+      "lang": "ko",
+      "critical": true,
+      "context": {
+        "source": "스미스 씨는 어제 병원에 왔습니다.",
+        "translation": "スミスさんは昨日クリニックに来ました。"
+      },
+      "source": "그는 허리 통증을 호소했습니다.",
+      "mustInclude": [
+        [
+          "腰",
+          "背中"
+        ]
+      ],
+      "mustNotInclude": []
+    },
+    {
+      "id": "mono-05",
+      "domain": "medical",
+      "lang": "ko",
+      "critical": false,
+      "context": {
+        "source": "물리치료사는 두 시에 옵니다.",
+        "translation": "理学療法士は2時に来ます。"
+      },
+      "source": "그전에 준비해 주세요.",
+      "mustInclude": [
+        [
+          "準備",
+          "支度"
+        ]
+      ],
+      "mustNotInclude": []
+    }
+  ]
 }

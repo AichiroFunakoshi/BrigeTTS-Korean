@@ -154,7 +154,7 @@ footer a { color: #60a5fa; text-decoration: none; }
 
 <header>
   <h1>BridgeTTS 図解ガイド</h1>
-  <p>日本語 ⇔ 英語 リアルタイム音声翻訳アプリ — エンドユーザー向け完全ガイド</p>
+  <p>日本語 ⇔ 韓国語 リアルタイム音声翻訳アプリ — エンドユーザー向け完全ガイド</p>
   <span class="badge">gpt-4.1-nano 搭載 ／ PWA + iOSネイティブアプリ対応</span>
 </header>
 
@@ -183,16 +183,16 @@ footer a { color: #60a5fa; text-decoration: none; }
 <section id="intro">
   <h2>1. はじめに — このアプリでできること</h2>
   <p>
-    <strong>BridgeTTS</strong>は、日本語と英語のあいだをリアルタイムで音声翻訳するアプリです。
+    <strong>BridgeTTS</strong>は、日本語と韓国語のあいだをリアルタイムで音声翻訳するアプリです。
     マイクに向かって話すだけで文字起こし・翻訳が行われ、翻訳結果をタップすると音声で読み上げてくれます。
-    通訳がいない場面での会話や、英語でのやりとりのブリッジとして活用できます。
+    通訳がいない場面での会話や、韓国語でのやりとりのブリッジとして活用できます。
   </p>
 
   <div class="card card-accent">
     <strong>できること（要点）</strong>
     <ul style="margin-top:8px; padding-left:1.3em;">
-      <li>日本語で話す → 英語に翻訳・表示・読み上げ</li>
-      <li>英語で話す → 日本語に翻訳・表示・読み上げ</li>
+      <li>日本語で話す → 韓国語に翻訳・表示・読み上げ</li>
+      <li>韓国語で話す → 日本語に翻訳・表示・読み上げ</li>
       <li>翻訳はリアルタイムのストリーミング表示</li>
       <li>翻訳ボックスをタップするだけで音声再生（TTS）</li>
       <li>直近20件の会話履歴を自動保存</li>
@@ -202,7 +202,7 @@ footer a { color: #60a5fa; text-decoration: none; }
   <div class="card card-warn">
     <strong>できないこと・制限</strong>
     <ul style="margin-top:8px; padding-left:1.3em;">
-      <li>日英ペアのみ対応（他の言語ペアは非対応）</li>
+      <li>日韓ペアのみ対応（他の言語ペアは非対応）</li>
       <li>翻訳にはインターネット接続が必須（オフライン翻訳不可）</li>
       <li>翻訳にはOpenAI APIキーの登録が必要（有料API）</li>
       <li>サイレントモード時はTTSが鳴らないことがある</li>
@@ -558,7 +558,7 @@ footer a { color: #60a5fa; text-decoration: none; }
       <rect x="256" y="92" width="72" height="32" rx="8" fill="#dc2626"/>
       <text x="292" y="113" text-anchor="middle" font-size="10" font-weight="700" fill="white" font-family="sans-serif">日本語</text>
       <rect x="334" y="92" width="72" height="32" rx="8" fill="#16a34a"/>
-      <text x="370" y="113" text-anchor="middle" font-size="10" font-weight="700" fill="white" font-family="sans-serif">English</text>
+      <text x="370" y="113" text-anchor="middle" font-size="10" font-weight="700" fill="white" font-family="sans-serif">한국어</text>
 
       <!-- Reset button (orange circle arrow) -->
       <circle cx="418" cy="108" r="11" fill="#ea580c"/>
@@ -583,9 +583,9 @@ footer a { color: #60a5fa; text-decoration: none; }
       <text x="262" y="303" font-size="9" font-weight="600" fill="#374151" font-family="sans-serif">会話履歴</text>
       <!-- history entries -->
       <rect x="260" y="308" width="160" height="20" rx="4" fill="#f1f5f9"/>
-      <text x="265" y="321" font-size="8" fill="#64748b" font-family="sans-serif">日→英 12:34 こんにちは... ▶ ⎘</text>
+      <text x="265" y="321" font-size="8" fill="#64748b" font-family="sans-serif">日→韓 12:34 こんにちは... ▶ ⎘</text>
       <rect x="260" y="332" width="160" height="20" rx="4" fill="#f1f5f9"/>
-      <text x="265" y="345" font-size="8" fill="#64748b" font-family="sans-serif">英→日 12:31 Good morn... ▶ ⎘</text>
+      <text x="265" y="345" font-size="8" fill="#64748b" font-family="sans-serif">韓→日 12:31 안녕하세요... ▶ ⎘</text>
       <text x="380" y="368" text-anchor="end" font-size="8" fill="#ef4444" font-family="sans-serif">消去</text>
 
       <!-- Bottom status bar hint -->
@@ -603,10 +603,10 @@ footer a { color: #60a5fa; text-decoration: none; }
       <rect x="14" y="118" width="206" height="28" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
       <text x="117" y="137" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="600" font-family="sans-serif">「日本語」ボタン（赤）→ 日本語録音開始</text>
 
-      <!-- Englishボタン -->
+      <!-- 한국어ボタン -->
       <line x1="384" y1="108" x2="510" y2="130" stroke="#475569" stroke-width="1.2" stroke-dasharray="4,2"/>
       <rect x="510" y="118" width="230" height="28" rx="6" fill="#f0fdf4" stroke="#86efac"/>
-      <text x="625" y="137" text-anchor="middle" font-size="11" fill="#15803d" font-weight="600" font-family="sans-serif">「English」ボタン（緑）→ 英語録音開始</text>
+      <text x="625" y="137" text-anchor="middle" font-size="11" fill="#15803d" font-weight="600" font-family="sans-serif">「한국어」ボタン（緑）→ 韓国語録音開始</text>
 
       <!-- 原文ボックス -->
       <line x1="248" y1="167" x2="220" y2="200" stroke="#475569" stroke-width="1.2" stroke-dasharray="4,2"/>
@@ -637,7 +637,7 @@ footer a { color: #60a5fa; text-decoration: none; }
   <h3>基本操作の手順</h3>
   <ol class="step-list">
     <li>アプリを起動し、設定（歯車）からOpenAI APIキーを入力する（初回のみ）</li>
-    <li>「日本語」（赤）または「English」（緑）ボタンをタップして録音を開始する</li>
+    <li>「日本語」（赤）または「한국어」（緑）ボタンをタップして録音を開始する</li>
     <li>マイクに向かってはっきり話す（原文ボックスに文字が表示される）</li>
     <li>話し終わると自動で翻訳が始まり、翻訳ボックスにリアルタイムで結果が表示される</li>
     <li>翻訳完了後、翻訳ボックスが緑色になったらタップして音声読み上げ（再生中タップで停止）</li>
@@ -671,7 +671,7 @@ footer a { color: #60a5fa; text-decoration: none; }
 
       <line x1="320" y1="100" x2="348" y2="100" stroke="#4b5563" stroke-width="2" marker-end="url(#arr5)"/>
       <text x="334" y="92" text-anchor="middle" font-size="9" fill="#64748b" font-family="sans-serif">話し終わり</text>
-      <text x="334" y="112" text-anchor="middle" font-size="9" fill="#64748b" font-family="sans-serif">+346/154ms</text>
+      <text x="334" y="112" text-anchor="middle" font-size="9" fill="#64748b" font-family="sans-serif">+346/346ms（暫定）</text>
 
       <!-- 翻訳中（オレンジ） -->
       <rect x="350" y="60" width="150" height="80" rx="16" fill="#ffedd5" stroke="#ea580c" stroke-width="2.5"/>
@@ -691,7 +691,7 @@ footer a { color: #60a5fa; text-decoration: none; }
 
       <!-- 下部ラベル: デバウンス説明 -->
       <rect x="310" y="155" width="165" height="26" rx="8" fill="#fff3e0" stroke="#fb923c"/>
-      <text x="392" y="173" text-anchor="middle" font-size="10" fill="#c2410c" font-family="sans-serif">待ち時間: 日本語346ms ／ 英語154ms</text>
+      <text x="392" y="173" text-anchor="middle" font-size="10" fill="#c2410c" font-family="sans-serif">待ち時間: 日本語346ms ／ 韓国語346ms（暫定）</text>
     </svg>
     <figcaption>図6 ： 状態遷移。待機 → 録音中（青点滅）→ 翻訳中（オレンジ点滅）→ 完了（緑・タップで読み上げ）</figcaption>
   </figure>
@@ -739,7 +739,7 @@ footer a { color: #60a5fa; text-decoration: none; }
         <tr>
           <td><strong>デバウンス最適化</strong></td>
           <td>使用パターン学習（任意）</td>
-          <td>合計50件・各言語15件の使用データで最適化可能。初期値は日本語346ms/英語154ms</td>
+          <td>合計50件・各言語15件の使用データで最適化可能。初期値は日本語346ms/韓国語346ms（暫定）</td>
         </tr>
       </tbody>
     </table>
@@ -764,7 +764,7 @@ footer a { color: #60a5fa; text-decoration: none; }
         <tr>
           <td><strong>履歴の確認</strong></td>
           <td>画面下部の会話履歴エリアを見る</td>
-          <td>各エントリに方向（日→英 / 英→日）と時刻が表示される</td>
+          <td>各エントリに方向（日→韓 / 韓→日）と時刻が表示される</td>
         </tr>
         <tr>
           <td><strong>再生</strong></td>
@@ -938,7 +938,7 @@ footer a { color: #60a5fa; text-decoration: none; }
           <td>文節区切りに対応した自然な応答（500msから31%改善）</td>
         </tr>
         <tr>
-          <td>英語</td>
+          <td>韓国語</td>
           <td><strong>154 ms</strong></td>
           <td>連続流暢な話し方パターンに追従（500msから69%改善）</td>
         </tr>
@@ -955,7 +955,7 @@ footer a { color: #60a5fa; text-decoration: none; }
       <tbody>
         <tr>
           <td>対応言語ペア</td>
-          <td colspan="2">日本語 ⇔ 英語のみ</td>
+          <td colspan="2">日本語 ⇔ 韓国語のみ</td>
         </tr>
         <tr>
           <td>翻訳方式</td>
@@ -1120,7 +1120,7 @@ footer a { color: #60a5fa; text-decoration: none; }
 <footer>
   <p>BridgeTTS 図解ガイド ／ 対象アプリ: Bridge-TTS Codex（gpt-4.1-nano搭載）</p>
   <p style="margin-top:6px;">
-    <a href="https://github.com/AichiroFunakoshi/Bridge-TTS-Codex-">GitHubリポジトリ</a>
+    <a href="https://github.com/AichiroFunakoshi/BrigeTTS-Korean">GitHubリポジトリ</a>
     ／
     <a href="https://platform.openai.com/api-keys">OpenAI APIキー取得</a>
     ／

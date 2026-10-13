@@ -18,7 +18,7 @@ test('loads app shell and core browser modules', async ({ page }) => {
     expect(response.status()).toBe(200);
     await expect(page.locator('.app-title')).toHaveText('BridgeTTS v2.9.3');
     await expect(page.locator('#startJapaneseBtn')).toBeVisible();
-    await expect(page.locator('#startEnglishBtn')).toBeVisible();
+    await expect(page.locator('#startKoreanBtn')).toBeVisible();
     await expect(page.locator('#translationBox')).toBeVisible();
     await expect(page.locator('#copyTranslationBtn')).toBeDisabled();
     await expect(page.locator('#presentTranslationBtn')).toBeVisible();
@@ -47,7 +47,7 @@ test('loads app shell and core browser modules', async ({ page }) => {
     await expect(page.locator('#sendLatencyBtn')).toHaveCount(1);
     await expect(page.locator('#apiUsageSummary')).toHaveCount(1);
     await expect(page.locator('#fontSizeToggleBtn')).toBeVisible();
-    await expect(page.locator('.app-subtitle')).toHaveText('日英リアルタイム音声翻訳');
+    await expect(page.locator('.app-subtitle')).toHaveText('日韓リアルタイム音声翻訳');
 
     await expect(page.locator('#apiModal')).toBeVisible();
     await expect(page.locator('#openaiKey')).toBeVisible();
@@ -75,19 +75,19 @@ test('loads the default translation prompt rules', async ({ page }) => {
 
     const prompt = await page.evaluate(() => window.PromptService.getTranslationSystemPrompt());
 
-    expect(prompt).toContain('日本語の場合は英語');
-    expect(prompt).toContain('英語の場合は日本語');
+    expect(prompt).toContain('日本語の場合は韓国語');
+    expect(prompt).toContain('韓国語の場合は日本語');
     expect(prompt).toContain('フィラー');
     expect(prompt).toContain('翻訳のみを出力');
 
     // 翻訳モード（会話領域）とユーザー辞書のプロンプト注入
     const injectedPrompt = await page.evaluate(() => window.PromptService.getTranslationSystemPrompt({
         domain: 'medical',
-        dictionary: [{ reading: 'さくらえん', surface: 'さくら苑', english: 'Sakura-en' }]
+        dictionary: [{ reading: 'さくらえん', surface: 'さくら苑', korean: '사쿠라엔' }]
     }));
     expect(injectedPrompt).toContain('医療・介護・福祉');
     expect(injectedPrompt).toContain('さくら苑');
-    expect(injectedPrompt).toContain('Sakura-en');
+    expect(injectedPrompt).toContain('사쿠라엔');
     expect(injectedPrompt).toContain('ユーザー辞書');
 
     const dailyPrompt = await page.evaluate(() => window.PromptService.getTranslationSystemPrompt({ domain: 'daily' }));
@@ -130,7 +130,7 @@ test('supports monotonic translation mode modules', async ({ page }) => {
     expect(result.refineKeepsOrder).toBe(true);
     expect(result.refineHasDomain).toBe(true);
     expect(result.customUserContent).toBe('CUSTOM');
-    expect(result.defaultUserContent).toBe('以下の日本語テキストを英語に翻訳してください:\n\nこんにちは');
+    expect(result.defaultUserContent).toBe('以下の日本語テキストを韓国語に翻訳してください:\n\nこんにちは');
     expect(result.stored).toBe('monotonic');
     expect(result.fallback).toBe('monotonic');
 });
@@ -147,7 +147,7 @@ test('uses side-by-side result boxes in landscape', async ({ page }) => {
         const originalRect = document.querySelector('#originalBox').getBoundingClientRect();
         const translationRect = document.querySelector('#translationBox').getBoundingClientRect();
         const jaRect = document.querySelector('#startJapaneseBtn').getBoundingClientRect();
-        const enRect = document.querySelector('#startEnglishBtn').getBoundingClientRect();
+        const enRect = document.querySelector('#startKoreanBtn').getBoundingClientRect();
         const resetRect = document.querySelector('#resetBtn').getBoundingClientRect();
 
         return {
@@ -157,7 +157,7 @@ test('uses side-by-side result boxes in landscape', async ({ page }) => {
             translationLeft: translationRect.left,
             // 言語ボタンが1段（折り返さない）で横幅いっぱいに広がること
             controlsSameRow: Math.abs(jaRect.top - enRect.top) < 4,
-            englishRightOfJapanese: enRect.left > jaRect.left,
+            koreanRightOfJapanese: enRect.left > jaRect.left,
             primaryWiderThanReset: jaRect.width > resetRect.width
         };
     });
@@ -166,7 +166,7 @@ test('uses side-by-side result boxes in landscape', async ({ page }) => {
     expect(layout.sameRow).toBe(true);
     expect(layout.translationLeft).toBeGreaterThan(layout.originalLeft);
     expect(layout.controlsSameRow).toBe(true);
-    expect(layout.englishRightOfJapanese).toBe(true);
+    expect(layout.koreanRightOfJapanese).toBe(true);
     expect(layout.primaryWiderThanReset).toBe(true);
 });
 
@@ -179,13 +179,13 @@ test('keeps primary controls thumb-friendly in portrait', async ({ page }) => {
 
     const layout = await page.evaluate(() => {
         const japaneseRect = document.querySelector('#startJapaneseBtn').getBoundingClientRect();
-        const englishRect = document.querySelector('#startEnglishBtn').getBoundingClientRect();
+        const koreanRect = document.querySelector('#startKoreanBtn').getBoundingClientRect();
         const resetRect = document.querySelector('#resetBtn').getBoundingClientRect();
 
         return {
-            sameRow: Math.abs(japaneseRect.top - englishRect.top) < 4,
-            similarPrimaryWidth: Math.abs(japaneseRect.width - englishRect.width) < 8,
-            primaryMinHeight: Math.min(japaneseRect.height, englishRect.height),
+            sameRow: Math.abs(japaneseRect.top - koreanRect.top) < 4,
+            similarPrimaryWidth: Math.abs(japaneseRect.width - koreanRect.width) < 8,
+            primaryMinHeight: Math.min(japaneseRect.height, koreanRect.height),
             resetWidth: resetRect.width,
             japaneseWidth: japaneseRect.width
         };
@@ -321,7 +321,7 @@ test('parses translator service stream lines and payloads', async ({ page }) => 
         stream: true,
         temperature: 0.3,
         systemPrompt: 'system prompt',
-        userPrompt: '以下の日本語テキストを英語に翻訳してください:\n\nこんにちは'
+        userPrompt: '以下の日本語テキストを韓国語に翻訳してください:\n\nこんにちは'
     });
     expect(consoleErrors).toEqual(expect.arrayContaining([
         expect.stringContaining('ストリーミングレスポンス解析エラー')
@@ -349,7 +349,7 @@ test('exports and imports settings as JSON', async ({ page }) => {
     await page.goto('/');
     const result = await page.evaluate(() => {
         window.AppSettingsStorage.setTranslationDomain('daily');
-        window.AppSettingsStorage.setUserDictionary([{ reading: 'てすと', surface: 'テスト苑', english: 'Test-en' }]);
+        window.AppSettingsStorage.setUserDictionary([{ reading: 'てすと', surface: 'テスト苑', korean: '테스트엔' }]);
         const json = window.AppSettingsStorage.exportSettings();
 
         // 別の状態に変更してから復元できることを確認

@@ -6,10 +6,10 @@ import os
 import shutil
 import urllib.request
 
-REPO = os.environ.get("GITHUB_REPOSITORY", "AichiroFunakoshi/Bridge-TTS-Codex-")
-PAGES_BASE = "https://aichirofunakoshi.github.io/Bridge-TTS-Codex-"
+REPO = os.environ.get("GITHUB_REPOSITORY", "AichiroFunakoshi/BrigeTTS-Korean")
+PAGES_BASE = "https://aichirofunakoshi.github.io/BrigeTTS-Korean"
 DESCRIPTION = (
-    "日本語と英語のリアルタイム音声翻訳アプリ。\n"
+    "日本語と韓国語のリアルタイム音声翻訳アプリ。\n"
     "音声認識で文字起こしし、OpenAI APIで翻訳、音声で読み上げます。\n"
     "利用にはOpenAI APIキーが必要です。"
 )
@@ -54,16 +54,16 @@ def build_versions(releases):
 def main():
     versions = build_versions(fetch_releases())
     source = {
-        "name": "BridgeTTS Source",
-        "identifier": "com.a16.bridgetts.source",
-        "subtitle": "日英リアルタイム音声翻訳",
+        "name": "BridgeTTS Korean Source",
+        "identifier": "com.a16.bridgetts.korean.source",
+        "subtitle": "日韓リアルタイム音声翻訳",
         "website": f"https://github.com/{REPO}",
         "iconURL": f"{PAGES_BASE}/icon.png",
         "apps": [{
-            "name": "BridgeTTS",
-            "bundleIdentifier": "com.a16.bridgetts",
+            "name": "BridgeTTS Korean",
+            "bundleIdentifier": "com.a16.bridgetts.korean",
             "developerName": "A_1_6",
-            "subtitle": "日英リアルタイム音声翻訳",
+            "subtitle": "日韓リアルタイム音声翻訳",
             "localizedDescription": DESCRIPTION,
             "iconURL": f"{PAGES_BASE}/icon.png",
             "tintColor": "#4292CD",
@@ -102,7 +102,7 @@ code {{ background: #f0f0f0; padding: 2px 6px; border-radius: 4px; word-break: b
 <body>
 <img src="icon.png" alt="BridgeTTS">
 <h1>BridgeTTS</h1>
-<p>日英リアルタイム音声翻訳アプリのAltStoreソースです。</p>
+<p>日韓リアルタイム音声翻訳アプリのAltStoreソースです。</p>
 <p><a class="btn" href="altstore://source?url={source_url}">AltStoreにソースを追加</a></p>
 <p>上のボタンが動かない場合は、AltStoreの「Sources」→「＋」に次のURLを貼り付けてください：</p>
 <p><code>{source_url}</code></p>

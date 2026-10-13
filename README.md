@@ -1,29 +1,31 @@
-# BridgeTTS
+# BridgeTTS Korean
 
 ![BridgeTTS](images/icons/ios-appicon-1024.png)
 
-日本語と英語のリアルタイム音声翻訳アプリです。音声認識で文字起こしし、OpenAI API（gpt-4.1-nano）で翻訳、Web Speech APIで音声読み上げ（TTS）します。**PWA（ブラウザ）** と **iOSネイティブアプリ（AltStore配布）** の2形態で動作します。
+**韓国語版は開発中です。以下の配信URLは韓国語版用の予定先で、公開・IPAリリースは未実施です。英語版の過去の評価結果は韓国語版の品質保証にはなりません。**
+
+日本語と韓国語のリアルタイム音声翻訳アプリです。音声認識で文字起こしし、OpenAI API（gpt-4.1-nano）で翻訳、Web Speech APIで音声読み上げ（TTS）します。**PWA（ブラウザ）** と **iOSネイティブアプリ（AltStore配布）** の2形態で動作します。
 
 - 更新履歴: [CHANGELOG.md](CHANGELOG.md)
 - iOSアプリのビルド・インストール手順: [docs/IOS_APP.md](docs/IOS_APP.md)
 - 図解仕様書: [docs/VISUAL_GUIDE.html](docs/VISUAL_GUIDE.html)
 - 開発の引き継ぎ・別PCでの作業継続: [docs/HANDOFF.md](docs/HANDOFF.md)
 - 順送り翻訳（石畳方式）の設計文書: 仕様書 [docs/MONOTONIC_BETA_SPEC.md](docs/MONOTONIC_BETA_SPEC.md) / 論文 [docs/ISHIDATAMI_SCHEME.md](docs/ISHIDATAMI_SCHEME.md)
-- 進捗ダッシュボード: https://aichirofunakoshi.github.io/Bridge-TTS-Codex-/dashboard.html
+- 進捗ダッシュボード: https://aichirofunakoshi.github.io/BrigeTTS-Korean/dashboard.html
 
 ## インストール
 
 ### iOSネイティブアプリ（推奨）
 
 1. AltStore/AltServerをセットアップ（初回のみ。[docs/IOS_APP.md](docs/IOS_APP.md)参照）
-2. iPhoneのSafariで **https://aichirofunakoshi.github.io/Bridge-TTS-Codex-/altstore.html** を開き「AltStoreにソースを追加」
+2. iPhoneのSafariで **https://aichirofunakoshi.github.io/BrigeTTS-Korean/altstore.html** を開き「AltStoreにソースを追加」
 3. AltStoreの Browse から BridgeTTS をインストール
 
 以後の更新はAltStoreの「アップデート」からワンタップで行えます（設定・履歴・APIキーは引き継がれます）。
 
 ### PWA（ブラウザ）
 
-1. https://aichirofunakoshi.github.io/Bridge-TTS-Codex-/ をSafari（iOS）/Chrome（Android）で開く
+1. https://aichirofunakoshi.github.io/BrigeTTS-Korean/ をSafari（iOS）/Chrome（Android）で開く
 2. iPhone/iPad: 共有ボタン →「ホーム画面に追加」 / Android: メニュー →「アプリをインストール」
 
 ### 必要なもの
@@ -33,16 +35,16 @@
 
 ## 主な機能
 
-- **リアルタイム音声翻訳**: 日本語⇄英語の双方向翻訳。話しながらストリーミングで翻訳結果を表示
+- **リアルタイム音声翻訳**: 日本語⇄韓国語の双方向翻訳。話しながらストリーミングで翻訳結果を表示
 - **順送り翻訳（石畳方式・既定）**: 発話の確定セグメントごとに前から訳を積み上げる凍結方式（確定訳は組み変わらない）。録音停止時に整形パスが原文全体と突き合わせて誤訳・訳抜けを修正する。従来の「標準（全文再翻訳）」も設定から選択可（フォールバック用）
 - **音声認識の誤り補正**: 同音異義語の誤変換や助詞の欠落を、翻訳時に文脈から推定して修正
 - **翻訳モード（会話領域スイッチ）**: 「医療・介護・福祉／日常会話」を設定で切替。領域に応じた翻訳方針をプロンプトに注入
-- **ユーザー辞書**: 施設名・人名などの固有名詞（よみ／表記／英語表記）を端末内に登録。音声認識が別語に書き起こす固有名詞は「誤認識される表記」の登録で認識段階から決定的に置換
+- **ユーザー辞書**: 施設名・人名などの固有名詞（よみ／表記／韓国語表記）を端末内に登録。音声認識が別語に書き起こす固有名詞は「誤認識される表記」の登録で認識段階から決定的に置換
 - **TTS（音声読み上げ）**: 翻訳ボックスをタップで再生/停止。設定でON/OFF・速度（×0.8〜×1.2）・日本語の読み上げ音声を調整可能
 - **会話モード（オプション）**: 音声入力の停止後、最後の翻訳結果を自動で読み上げ（デフォルトOFF。対面会話でタップの手間を削減）
-- **ターン制の会話フロー**: TTS実行＝1ターンの終了として音声入力を自動停止。次の入力は言語ボタンから開始（TTS後の認識再開による冒頭欠け・精度低下を防止し、日英の言語切替も自然に）。30秒間無音の場合も自動停止（電池・発熱対策）
+- **ターン制の会話フロー**: TTS実行＝1ターンの終了として音声入力を自動停止。次の入力は言語ボタンから開始（TTS後の認識再開による冒頭欠け・精度低下を防止し、日韓の言語切替も自然に）。30秒間無音の場合も自動停止（電池・発熱対策）
 - **会話履歴**: 直近20件をヘッダーの履歴ボタンから専用画面で閲覧。各エントリの再生・コピー、全消去に対応。端末内（localStorage）にのみ保存
-- **デバウンス最適化（学習型）**: デフォルト値（日本語346ms/英語154ms）から、音声認識の更新間隔を学習して翻訳開始の待ち時間を言語別に自己最適化（90パーセンタイル×1.2）。日英は独立しており、片方の言語が30件に達すればその言語だけで最適化可能
+- **デバウンス最適化（学習型）**: デフォルト値（日本語346ms/韓国語346ms（暫定））から、音声認識の更新間隔を学習して翻訳開始の待ち時間を言語別に自己最適化（90パーセンタイル×1.2）。日韓は独立しており、片方の言語が30件に達すればその言語だけで最適化可能
 - **テーマ切替**: 自動（端末設定に追従）/ライト/ダーク
 - **フォントサイズ調整**: 小/中/大/特大の4段階
 - **レスポンシブレイアウト**: 横画面では原文と翻訳を左右並列表示
@@ -58,11 +60,13 @@ WKWebViewでWebアプリ本体をそのまま動かし、WKWebViewに存在し�
 - `v*` タグのpushで、GitHub Actionsが未署名IPAをビルドしReleaseに添付
 - 併せてAltStoreソース（apps.json）がGitHub Pagesへ自動公開され、AltStoreに更新が配信される
 
+韓国語TTSは端末の韓国語音声を利用します。利用端末の音声一覧に`ko-KR`が必要です。英語版とは設定・辞書・履歴を分離しているため、韓国語版でもAPIキーを設定してください。
+
 ## 開発
 
 ```bash
-git clone https://github.com/AichiroFunakoshi/Bridge-TTS-Codex-.git
-cd Bridge-TTS-Codex-
+git clone https://github.com/AichiroFunakoshi/BrigeTTS-Korean.git
+cd BrigeTTS-Korean
 
 # Node 22を使用（Playwright 1.60はNode 24/25で不安定なため）
 nvm use  # .nvmrc準拠。Homebrewの場合: export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
@@ -99,8 +103,10 @@ npm run test:smoke -- --reporter=line
 - iOS Safari / Android Chrome / Edge: 対応
 - Firefox Mobile: 非対応（Web Speech API非搭載）
 
+日韓評価は `node eval/run-eval.js --dry-run` と `--monotonic --dry-run` で構成検証できます。実翻訳の品質評価はAPIキーが必要で未実施です。コピー元の英語評価データは `eval/cases-english.json` と `eval/cases-monotonic-english.json` に保存しています。
+
 ## 既知の制限
 
 - 翻訳にはインターネット接続とOpenAI APIキーが必要（使用量に応じてAPI料金が発生）
-- 対応言語ペアは日本語⇄英語のみ
+- 対応言語ペアは日本語⇄韓国語のみ
 - 無料Apple IDでのサイドロードは7日ごとの再署名（AltStoreが自動更新）と3アプリ制限あり

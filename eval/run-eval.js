@@ -3,7 +3,7 @@
  * BridgeTTS 翻訳品質評価ハーネス（F11）
  *
  * 使い方:
- *   OPENAI_API_KEY=sk-... node eval/run-eval.js            # 全50ケースを実行
+ *   OPENAI_API_KEY=sk-... node eval/run-eval.js            # 日韓ケースを実行
  *   node eval/run-eval.js --dry-run                        # API呼び出しなしで構成検証
  *   OPENAI_API_KEY=... node eval/run-eval.js --domain medical --limit 10
  *   OPENAI_API_KEY=... node eval/run-eval.js --id asr-01,dict-03
@@ -12,7 +12,7 @@
  * 判定:
  *   - mustInclude: 各要素が訳文に含まれること（要素が配列の場合はいずれか1つで可）
  *   - mustNotInclude: いずれも含まれないこと
- *   - ja→en は小文字化して照合、en→ja はそのまま部分一致
+ *   - ja→ko は小文字化して照合、ko→ja はそのまま部分一致
  *   - critical ケースの失敗は「致命的誤訳」としてKPI-3の判定対象
  *
  * 結果は eval/results/eval-<日時>.md に保存（gitignore対象）。
@@ -75,8 +75,8 @@ async function translate(testCase, apiKey, model) {
         domain: testCase.domain === 'daily' ? 'daily' : 'medical',
         dictionary: testCase.dictionary || []
     });
-    const label = testCase.lang === 'ja' ? '日本語' : '英語';
-    const target = testCase.lang === 'ja' ? '英語' : '日本語';
+    const label = testCase.lang === 'ja' ? '日本語' : '韓国語';
+    const target = testCase.lang === 'ja' ? '韓国語' : '日本語';
     // 順送り訳β: 文脈付きチャンク翻訳（app.js buildMonotonicUserContent と同形式）
     const userContent = testCase.context
         ? `直前の発話（文脈。翻訳しないこと）:\n原文: ${testCase.context.source}\n訳文: ${testCase.context.translation}\n\n以下の${label}テキストは発話の続きである。上の文脈に自然につながる${target}訳のみを出力してください:\n\n${testCase.source}`

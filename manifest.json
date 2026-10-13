@@ -1,7 +1,7 @@
 {
-  "name": "BridgeTTS",
-  "short_name": "BridgeTTS",
-  "description": "日英リアルタイム音声翻訳PWA",
+  "name": "BridgeTTS Korean",
+  "short_name": "BridgeTTS Korean",
+  "description": "日韓リアルタイム音声翻訳PWA",
   "icons": [
     {
       "src": "images/icons/icon-120x120.png",

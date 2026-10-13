@@ -1,22 +1,22 @@
 // ブラウザローカル設定の読み書き
 const AppSettingsStorage = {
     keys: {
-        openaiKey: 'translatorOpenaiKey',
-        ttsEnabled: 'translatorTTSEnabled',
-        autoTtsEnabled: 'translatorAutoTTSEnabled',
-        ttsSpeed: 'translatorTTSSpeed',
-        ttsVoiceJa: 'translatorTTSVoiceJa',
-        fontSize: 'translatorFontSize',
-        debounceData: 'translatorDebounceData',
-        optimizedDebounce: 'translatorOptimizedDebounce',
-        debounceOptimizedAt: 'translatorDebounceOptimizedAt',
-        theme: 'translatorTheme',
-        conversationLog: 'translatorConversationLog',
-        translationDomain: 'translatorTranslationDomain',
-        translationStrategy: 'translatorTranslationStrategy',
-        userDictionary: 'translatorUserDictionary',
-        latencyData: 'translatorLatencyData',
-        usageTotals: 'translatorUsageTotals'
+        openaiKey: 'translatorKoreanOpenaiKey',
+        ttsEnabled: 'translatorKoreanTTSEnabled',
+        autoTtsEnabled: 'translatorKoreanAutoTTSEnabled',
+        ttsSpeed: 'translatorKoreanTTSSpeed',
+        ttsVoiceJa: 'translatorKoreanTTSVoiceJa',
+        fontSize: 'translatorKoreanFontSize',
+        debounceData: 'translatorKoreanDebounceData',
+        optimizedDebounce: 'translatorKoreanOptimizedDebounce',
+        debounceOptimizedAt: 'translatorKoreanDebounceOptimizedAt',
+        theme: 'translatorKoreanTheme',
+        conversationLog: 'translatorKoreanConversationLog',
+        translationDomain: 'translatorKoreanTranslationDomain',
+        translationStrategy: 'translatorKoreanTranslationStrategy',
+        userDictionary: 'translatorKoreanUserDictionary',
+        latencyData: 'translatorKoreanLatencyData',
+        usageTotals: 'translatorKoreanUsageTotals'
     },
 
     fontSizeValues: ['small', 'medium', 'large', 'xlarge'],
@@ -207,7 +207,7 @@ const AppSettingsStorage = {
         ).map((entry) => ({
             reading: typeof entry.reading === 'string' ? entry.reading : '',
             surface: entry.surface,
-            english: typeof entry.english === 'string' ? entry.english : '',
+            korean: typeof entry.korean === 'string' ? entry.korean : '',
             // 誤認識パターン: 音声認識がこの語に書き起こしがちな別表記
             // （例: 禄寿園に対する「60円」）。翻訳前にsurfaceへ決定的に置換される。
             aliases: Array.isArray(entry.aliases)
@@ -275,7 +275,7 @@ const AppSettingsStorage = {
             }
         });
         return JSON.stringify({
-            app: 'BridgeTTS',
+            app: 'BridgeTTS-Korean',
             type: 'settings-export',
             formatVersion: 1,
             exportedAt: new Date().toISOString(),
@@ -291,7 +291,7 @@ const AppSettingsStorage = {
         } catch (error) {
             return { ok: false, error: 'JSONとして読み取れません' };
         }
-        if (!parsed || parsed.app !== 'BridgeTTS' || parsed.type !== 'settings-export' ||
+        if (!parsed || parsed.app !== 'BridgeTTS-Korean' || parsed.type !== 'settings-export' ||
             typeof parsed.data !== 'object' || parsed.data === null) {
             return { ok: false, error: 'BridgeTTSの設定エクスポートではありません' };
         }
@@ -318,7 +318,7 @@ const AppSettingsStorage = {
             entry && typeof entry === 'object' &&
             typeof entry.original === 'string' && entry.original.trim() !== '' &&
             typeof entry.translation === 'string' && entry.translation.trim() !== '' &&
-            (entry.sourceLanguage === 'ja' || entry.sourceLanguage === 'en')
+            (entry.sourceLanguage === 'ja' || entry.sourceLanguage === 'ko')
         );
     },
 

@@ -43,7 +43,7 @@ const ErrorReporter = {
     // 異常終了の検出（フリーズ→強制終了はJSエラーを出さないため、
     // 録音中であることをlocalStorageに記録し、次回起動時に照合する）
     // ========================================
-    sessionStateKey: 'translatorSessionState',
+    sessionStateKey: 'translatorKoreanSessionState',
 
     // 録音開始時にtrue、正常停止・ページ離脱時にfalseで呼び出す。
     // 録音中はハートビート（heartbeat）で直近ログとともに定期更新する。
@@ -416,12 +416,12 @@ const ErrorReporter = {
     postIssue: async function({ title, body, labels }) {
         const token = this.getReportToken();
         if (!token) {
-            const issueUrl = 'https://github.com/AichiroFunakoshi/Bridge-TTS-Codex-/issues/new' +
+            const issueUrl = 'https://github.com/AichiroFunakoshi/BrigeTTS-Korean/issues/new' +
                 `?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
             window.open(issueUrl, '_blank');
             return null;
         }
-        const response = await fetch('https://api.github.com/repos/AichiroFunakoshi/Bridge-TTS-Codex-/issues', {
+        const response = await fetch('https://api.github.com/repos/AichiroFunakoshi/BrigeTTS-Korean/issues', {
             method: 'POST',
             headers: {
                 'Accept': 'application/vnd.github+json',
@@ -444,7 +444,7 @@ const ErrorReporter = {
 
     openGitHubIssue: function(report) {
         const content = this.buildIssueContent(report);
-        const issueUrl = 'https://github.com/AichiroFunakoshi/Bridge-TTS-Codex-/issues/new' +
+        const issueUrl = 'https://github.com/AichiroFunakoshi/BrigeTTS-Korean/issues/new' +
             `?title=${encodeURIComponent(content.title)}&body=${encodeURIComponent(content.body)}`;
         window.open(issueUrl, '_blank');
     }

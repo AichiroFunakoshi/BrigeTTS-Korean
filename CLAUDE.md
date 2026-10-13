@@ -3,18 +3,20 @@
 このファイルは、このリポジトリで作業するAIアシスタント（Claude等）の動作ベース。
 **セッション開始時に必ず参照し、ここの規律に従うこと。**
 
+> 韓国語版の現行状態はdocs/HANDOFF.md冒頭を正とする。以下の旧リリース・安定タグ・性能数値はコピー元の情報で、韓国語版では未検証。
+
 ## プロジェクト概要
-- **BridgeTTS**: 日英リアルタイム音声翻訳アプリ。**PWA（ブラウザ）** と **iOSネイティブ（AltStore配布）** の2形態。
+- **BridgeTTS**: 日韓リアルタイム音声翻訳アプリ。**PWA（ブラウザ）** と **iOSネイティブ（AltStore配布）** の2形態。
 - 翻訳: OpenAI `gpt-4.1-nano`（端末から直接呼び出し）。音声: Web Speech API（iOSは `SFSpeechRecognizer` ブリッジで補完）。
 - 主要ファイル: `app.js`（本体・認識制御/翻訳トリガー/UI）, `translator-service.js`, `prompt-service.js`, `tts-service.js`, `native-speech.js`, `settings-storage.js`, `error-reporter.js`, `sw.js`, `index.html`, `style.css`, `ios/`。
 
 ## 触れてはいけない核（要・慎重）
 - **翻訳・音声認識・TTSのコアロジック**（`app.js` の認識制御、`translator-service.js` / `tts-service.js` / `prompt-service.js`）は、検証なしに変更しない。
 - 変更は **「追加中心・最小差分」** を基本とし、既存の挙動を変えない。
-- **TTSの言語**: `TtsService.speak({ sourceLanguage })` は内部で言語を反転して発話言語を決める（`tts-service.js` 内 `sourceLanguage === 'ja' ? 'en-US' : 'ja-JP'`）。呼び出し側には **ソース（入力）言語** を渡す。呼び出し側での反転は二重反転になり禁止。
+- **TTSの言語**: `TtsService.speak({ sourceLanguage })` は内部で言語を反転して発話言語を決める（`tts-service.js` 内 `sourceLanguage === 'ja' ? 'ko-KR' : 'ja-JP'`）。呼び出し側には **ソース（入力）言語** を渡す。呼び出し側での反転は二重反転になり禁止。
 
 ## 作業環境・リポジトリ規律
-- **GitHub（origin/main）が唯一の正**。複数Macで開発する場合、各Macに `~/Bridge-TTS(Codex)` としてローカルクローンを置く。
+- **GitHub（origin/main）が唯一の正**。複数Macで開発する場合、各Macに `~/BrigeTTS-Korean` としてローカルクローンを置く。
 - **セッション開始時の手順（指示がなくても必ず実施）**:
   1. ロック掃除→ `git fetch` → `git status -sb` と `git log --oneline -1` で**ローカルとorigin/mainの一致を確認**。
      このフォルダは手動コピーで他のMacから持ち込まれることがあり、古い状態・未コミット変更を含み得る。
