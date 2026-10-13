@@ -5,7 +5,7 @@ for (const scenario of [
     { source: 'ko', locale: 'ko-KR', button: 'startKoreanBtn', input: '안녕하세요', output: 'こんにちは', target: 'ja-JP', stop: '정지' }
 ]) {
     for (const strategy of ['retranslation', 'monotonic']) {
-        test(`${scenario.source} conversation uses correct recognition, translation and TTS (${strategy})`, async ({ page }) => {
+        test(`${scenario.source} conversation uses correct recognition, translation and TTS (${strategy})`, async ({ page }, testInfo) => {
             const payloads = [];
             await page.route('https://api.openai.com/**', async (route) => {
                 if (route.request().method() !== 'POST') {
@@ -62,7 +62,7 @@ for (const scenario of [
             expect(payloads[0].messages[1].content).toContain(scenario.source === 'ja' ? '韓国語' : '日本語');
             expect(payloads[0].messages[1].content).not.toContain('英語');
             if (scenario.source === 'ko' && strategy === 'retranslation') {
-                await page.screenshot({ path: '/Users/inaminetetsuo/BrigeTTS-Korean-local/korean-ui.png', fullPage: true });
+                await page.screenshot({ path: testInfo.outputPath('korean-ui.png'), fullPage: true });
             }
         });
     }
