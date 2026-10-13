@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'bridge-tts-codex-v28';
+const CACHE_VERSION = 'bridge-tts-korean-v1';
 const APP_SHELL = [
     './',
     './index.html',
@@ -34,7 +34,7 @@ self.addEventListener('activate', (event) => {
         caches.keys()
             .then((cacheNames) => Promise.all(
                 cacheNames
-                    .filter((cacheName) => cacheName !== CACHE_VERSION)
+                    .filter((cacheName) => cacheName.startsWith('bridge-tts-korean-') && cacheName !== CACHE_VERSION)
                     .map((cacheName) => caches.delete(cacheName))
             ))
             .then(() => self.clients.claim())

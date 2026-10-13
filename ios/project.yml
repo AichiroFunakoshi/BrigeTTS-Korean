@@ -24,7 +24,7 @@ targets:
         buildPhase: resources
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.a16.bridgetts
+        PRODUCT_BUNDLE_IDENTIFIER: com.a16.bridgetts.korean
         PRODUCT_NAME: BridgeTTS
         INFOPLIST_FILE: App/Info.plist
         GENERATE_INFOPLIST_FILE: NO
