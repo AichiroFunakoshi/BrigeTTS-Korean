@@ -22,7 +22,8 @@ concurrency:
 
 jobs:
   publish:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    # 非公開ReleaseのIPAはAltStoreから認証なしで取得できないため公開時のみ配信。
+    if: ${{ !github.event.repository.private && (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success') }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages

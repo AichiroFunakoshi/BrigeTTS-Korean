@@ -7,6 +7,11 @@
 
 ## [Unreleased]
 
+### AltStore配布準備
+- 非公開時のIPA手動インストールをREADME/手順書に明記し、未公開のソースURLと区別。
+- AltStoreのappPermissionsをInfo.plistと整合。非公開時はPages公開ジョブをスキップ。
+
+
 ### 韓国語版（2026-10-13）
 - テスト画像をPlaywrightの出力先へ保存し、Mac固有の絶対パスによるCI失敗を修正。
 - 日本語↔韓国語の翻訳・音声認識・TTS、辞書、履歴、学習、UIと使い方を対応。

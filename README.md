@@ -2,36 +2,41 @@
 
 ![BridgeTTS](images/icons/ios-appicon-1024.png)
 
-**韓国語版は開発中です。以下の配信URLは韓国語版用の予定先で、公開・IPAリリースは未実施です。英語版の過去の評価結果は韓国語版の品質保証にはなりません。**
+日本語↔韓国語の音声翻訳アプリです。OpenAI API（gpt-4.1-nano）で翻訳し、端末の音声で読み上げます。iOSネイティブ版とPWAのコードを共通化しています。
 
-日本語と韓国語のリアルタイム音声翻訳アプリです。音声認識で文字起こしし、OpenAI API（gpt-4.1-nano）で翻訳、Web Speech APIで音声読み上げ（TTS）します。**PWA（ブラウザ）** と **iOSネイティブアプリ（AltStore配布）** の2形態で動作します。
+## AltStoreでインストール
 
-- 更新履歴: [CHANGELOG.md](CHANGELOG.md)
-- iOSアプリのビルド・インストール手順: [docs/IOS_APP.md](docs/IOS_APP.md)
-- 図解仕様書: [docs/VISUAL_GUIDE.html](docs/VISUAL_GUIDE.html)
-- 開発の引き継ぎ・別PCでの作業継続: [docs/HANDOFF.md](docs/HANDOFF.md)
-- 順送り翻訳（石畳方式）の設計文書: 仕様書 [docs/MONOTONIC_BETA_SPEC.md](docs/MONOTONIC_BETA_SPEC.md) / 論文 [docs/ISHIDATAMI_SCHEME.md](docs/ISHIDATAMI_SCHEME.md)
-- 進捗ダッシュボード: https://aichirofunakoshi.github.io/BrigeTTS-Korean/dashboard.html
+**AltStore Classicを使用します。** 韓国語版v2.9.3の未署名IPAをGitHub Actionsでビルド済みです。リポジトリは非公開、GitHub PagesとAltStoreソースは未公開のため、現在はIPAを手動でインストールしてください。
 
-## インストール
+1. Mac/PCに[AltServer](https://altstore.io/)を導入し、iPhoneにAltStore Classicをインストールします。
+2. GitHubにログインし、[iOSビルド一覧](https://github.com/AichiroFunakoshi/BrigeTTS-Korean/actions/workflows/ios-build.yml)から最新の成功した実行を開きます。
+3. Artifactsの`BridgeTTS-unsigned-ipa`をダウンロードし、ZIPを展開して`BridgeTTS-unsigned.ipa`を取り出します。
+4. IPAをAirDropなどでiPhoneへ転送します。AltServerが動作するMac/PCとiPhoneを接続してください。
+5. iPhoneのAltStoreで **My Apps → ＋ → IPAを選択** し、自分のApple IDで署名・インストールします。
+6. 初回起動時にマイク・音声認識を許可し、設定画面にOpenAI APIキーを入力します。
 
-### iOSネイティブアプリ（推奨）
+MacでIPAをダブルクリックする方法ではインストールできません。iOS 16以降ではデベロッパモードの有効化が必要です。無料Apple IDでは7日ごとの署名更新と同時3アプリの制限があります。[AltStore公式ガイド](https://faq.altstore.io/altstore-classic/your-altstore)
 
-1. AltStore/AltServerをセットアップ（初回のみ。[docs/IOS_APP.md](docs/IOS_APP.md)参照）
-2. iPhoneのSafariで **https://aichirofunakoshi.github.io/BrigeTTS-Korean/altstore.html** を開き「AltStoreにソースを追加」
-3. AltStoreの Browse から BridgeTTS をインストール
+更新時は新しいIPAを同じ方法でインストールします。韓国語版のbundle IDは`com.a16.bridgetts.korean`で、英語版と併用できます。韓国語版の設定・辞書・履歴は英語版から独立しています。更新前に設定エクスポートでバックアップできます（APIキー・会話履歴はエクスポート対象外）。
 
-以後の更新はAltStoreの「アップデート」からワンタップで行えます（設定・履歴・APIキーは引き継がれます）。
+## ソースからの自動配布・PWA
 
-### PWA（ブラウザ）
+ソース生成とPages配信のワークフローは用意していますが、非公開リポジトリでは自動配信をスキップします。公開配布に切り替える場合は、リポジトリ公開・GitHub PagesのActions設定・IPA付きReleaseの公開が必要です。
 
-1. https://aichirofunakoshi.github.io/BrigeTTS-Korean/ をSafari（iOS）/Chrome（Android）で開く
-2. iPhone/iPad: 共有ボタン →「ホーム画面に追加」 / Android: メニュー →「アプリをインストール」
+配信設定後のURL（現時点では未公開）:
 
-### 必要なもの
+- AltStore登録ページ: `https://aichirofunakoshi.github.io/BrigeTTS-Korean/altstore.html`
+- AltStoreソース: `https://aichirofunakoshi.github.io/BrigeTTS-Korean/apps.json`
+- PWA: `https://aichirofunakoshi.github.io/BrigeTTS-Korean/`
 
-- OpenAI APIキー（[取得はこちら](https://platform.openai.com/api-keys)）
-- APIキーは端末のlocalStorageにのみ保存され、翻訳時にOpenAI APIへ直接送信されます。リポジトリやサーバーには保存されません。共有端末では使用後に「APIキーリセット」を実行してください。
+## 必要なもの・確認状況
+
+- iOS 16以降、AltStore Classic/AltServer、OpenAI APIキー、インターネット接続。
+- 韓国語TTSには端末の韓国語音声（ko-KR）が必要です。読み上げできない場合はiPhoneの音声設定で韓国語音声を確認してください。
+- APIキーはアプリ内に保存され、翻訳時にOpenAIへ直接送信されます。リポジトリには保存しません。
+- IPAビルドとバンドル内容を確認済み。iPhoneへの実インストール、音声認識・TTSの実機動作、実API翻訳品質は未確認です。コピー元英語版の品質数値は韓国語版の結果ではありません。
+
+詳しい[インストール・ビルド手順](docs/IOS_APP.md)、[更新履歴](CHANGELOG.md)、[作業引継ぎ](docs/HANDOFF.md)も参照してください。
 
 ## 主な機能
 
@@ -51,14 +56,14 @@
 - **視覚的状態フィードバック**: 録音中（青）/翻訳中（オレンジ）/完了（緑）を色で表示
 - **設定のエクスポート/インポート**: ユーザー辞書・翻訳モード・デバウンス学習値・表示設定をJSON一括でコピー/貼り付けし、別端末へ移行可能
 - **API使用量の表示**: 翻訳ごとのトークン数を端末内で累計し、設定画面に概算コスト（gpt-4.1-nano料金基準）を表示。レイテンシ統計の1タップ送信にも対応
-- **エラー報告**: エラー発生時に「⚠️ エラーを報告」ボタンが出現。ネイティブアプリではGitHub Issuesへ直接送信（アカウント不要・APIキー等は自動マスク）、Web版ではIssue下書き画面を開く。録音中のフリーズ→強制終了もハートビートで検出し、次回起動時に直前ログ付きで報告可能
+- **エラー報告**: エラー発生時に「⚠️ エラーを報告」ボタンが出現。専用の報告トークン未設定時はGitHubのIssue下書き画面を開く（この非公開リポジトリへのアクセス権が必要・APIキー等は自動マスク）。録音中のフリーズ→強制終了もハートビートで検出し、次回起動時に直前ログ付きで報告可能
 
 ## iOSネイティブアプリの仕組み
 
 WKWebViewでWebアプリ本体をそのまま動かし、WKWebViewに存在しない音声認識（webkitSpeechRecognition）をネイティブの `SFSpeechRecognizer` ブリッジ（`native-speech.js` + Swift）で補完しています。Webアプリ本体は両環境で共通です。
 
 - `v*` タグのpushで、GitHub Actionsが未署名IPAをビルドしReleaseに添付
-- 併せてAltStoreソース（apps.json）がGitHub Pagesへ自動公開され、AltStoreに更新が配信される
+- 公開リポジトリでPages設定済みの場合、AltStoreソース（apps.json）を公開して更新を配信する
 
 韓国語TTSは端末の韓国語音声を利用します。利用端末の音声一覧に`ko-KR`が必要です。英語版とは設定・辞書・履歴を分離しているため、韓国語版でもAPIキーを設定してください。
 
@@ -71,7 +76,7 @@ cd BrigeTTS-Korean
 # Node 22を使用（Playwright 1.60はNode 24/25で不安定なため）
 nvm use  # .nvmrc準拠。Homebrewの場合: export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 
-npm install
+npm ci
 npx playwright install chromium
 npm run test:smoke -- --reporter=line
 ```
@@ -80,10 +85,10 @@ npm run test:smoke -- --reporter=line
 
 ### リリース手順
 
-1. `ios/project.yml` の `MARKETING_VERSION`、`index.html` のバージョン表記（タイトル・フッター）、`tests/smoke.test.js` の期待値を更新
+1. `package.json` / `package-lock.json`、`ios/project.yml` の `MARKETING_VERSION`、`index.html` のバージョン表記（タイトル・フッター）、`tests/smoke.test.js` の期待値を更新
 2. `CHANGELOG.md` に変更内容を記録
 3. PRをmainへマージ後、`git tag vX.Y.Z && git push origin vX.Y.Z`
-4. 以降は自動（IPAビルド → Release添付 → AltStoreソース更新）
+4. IPAビルド → Release添付。公開リポジトリかつPages設定済みならAltStoreソースも更新（非公開時は手動IPAインストール）
 
 ### 主要ファイル
 
