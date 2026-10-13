@@ -7,8 +7,8 @@
 
 ## [Unreleased]
 
-### AltStore配布準備
-- 非公開時のIPA手動インストールをREADME/手順書に明記し、未公開のソースURLと区別。
+### AltStore公開配布
+- 韓国語版の公開リポジトリ・AltStoreソース・IPA配布の導入手順をREADME/手順書に反映。手動導入の手順も維持。
 - AltStoreのappPermissionsをInfo.plistと整合。非公開時はPages公開ジョブをスキップ。
 
 

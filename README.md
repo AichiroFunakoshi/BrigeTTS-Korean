@@ -6,7 +6,14 @@
 
 ## AltStoreでインストール
 
-**AltStore Classicを使用します。** 韓国語版v2.9.3の未署名IPAをGitHub Actionsでビルド済みです。リポジトリは非公開、GitHub PagesとAltStoreソースは未公開のため、現在はIPAを手動でインストールしてください。
+**AltStore Classicを使用します。** 韓国語版v2.9.3の未署名IPAを配布します。英語版とは別アプリとしてインストールできます。
+
+1. iPhoneのSafariで[AltStore登録ページ](https://aichirofunakoshi.github.io/BrigeTTS-Korean/altstore.html)を開き、「AltStoreにソースを追加」をタップします。
+2. またはAltStoreのSources → ＋に `https://aichirofunakoshi.github.io/BrigeTTS-Korean/apps.json` を登録します。
+3. Browseから **BridgeTTS Korean → FREE** を選択してインストールします。
+4. 初回起動時にマイク・音声認識を許可し、設定にOpenAI APIキーを入力します。
+
+ソース登録後は、韓国語版の新しいリリースをAltStoreで受け取れます。IPAを手動で取り込む場合は次の手順です。
 
 1. Mac/PCに[AltServer](https://altstore.io/)を導入し、iPhoneにAltStore Classicをインストールします。
 2. GitHubにログインし、[iOSビルド一覧](https://github.com/AichiroFunakoshi/BrigeTTS-Korean/actions/workflows/ios-build.yml)から最新の成功した実行を開きます。
@@ -17,17 +24,17 @@
 
 MacでIPAをダブルクリックする方法ではインストールできません。iOS 16以降ではデベロッパモードの有効化が必要です。無料Apple IDでは7日ごとの署名更新と同時3アプリの制限があります。[AltStore公式ガイド](https://faq.altstore.io/altstore-classic/your-altstore)
 
-更新時は新しいIPAを同じ方法でインストールします。韓国語版のbundle IDは`com.a16.bridgetts.korean`で、英語版と併用できます。韓国語版の設定・辞書・履歴は英語版から独立しています。更新前に設定エクスポートでバックアップできます（APIキー・会話履歴はエクスポート対象外）。
+手動導入時の更新は新しいIPAを同じ方法でインストールします。韓国語版のbundle IDは`com.a16.bridgetts.korean`で、英語版と併用できます。韓国語版の設定・辞書・履歴は英語版から独立しています。更新前に設定エクスポートでバックアップできます（APIキー・会話履歴はエクスポート対象外）。
 
 ## ソースからの自動配布・PWA
 
-ソース生成とPages配信のワークフローは用意していますが、非公開リポジトリでは自動配信をスキップします。公開配布に切り替える場合は、リポジトリ公開・GitHub PagesのActions設定・IPA付きReleaseの公開が必要です。
+リポジトリは公開し、GitHub PagesをActions配信に設定しています。IPA付きReleaseからAltStoreソースを生成します。
 
-配信設定後のURL（現時点では未公開）:
+配信URL:
 
 - AltStore登録ページ: `https://aichirofunakoshi.github.io/BrigeTTS-Korean/altstore.html`
 - AltStoreソース: `https://aichirofunakoshi.github.io/BrigeTTS-Korean/apps.json`
-- PWA: `https://aichirofunakoshi.github.io/BrigeTTS-Korean/`
+- PWA: [ブラウザで開く](https://aichirofunakoshi.github.io/BrigeTTS-Korean/)
 
 ## 必要なもの・確認状況
 
@@ -56,7 +63,7 @@ MacでIPAをダブルクリックする方法ではインストールできま�
 - **視覚的状態フィードバック**: 録音中（青）/翻訳中（オレンジ）/完了（緑）を色で表示
 - **設定のエクスポート/インポート**: ユーザー辞書・翻訳モード・デバウンス学習値・表示設定をJSON一括でコピー/貼り付けし、別端末へ移行可能
 - **API使用量の表示**: 翻訳ごとのトークン数を端末内で累計し、設定画面に概算コスト（gpt-4.1-nano料金基準）を表示。レイテンシ統計の1タップ送信にも対応
-- **エラー報告**: エラー発生時に「⚠️ エラーを報告」ボタンが出現。専用の報告トークン未設定時はGitHubのIssue下書き画面を開く（この非公開リポジトリへのアクセス権が必要・APIキー等は自動マスク）。録音中のフリーズ→強制終了もハートビートで検出し、次回起動時に直前ログ付きで報告可能
+- **エラー報告**: エラー発生時に「⚠️ エラーを報告」ボタンが出現。専用の報告トークン未設定時はGitHubのIssue下書き画面を開く（GitHubアカウントが必要・APIキー等は自動マスク）。録音中のフリーズ→強制終了もハートビートで検出し、次回起動時に直前ログ付きで報告可能
 
 ## iOSネイティブアプリの仕組み
 

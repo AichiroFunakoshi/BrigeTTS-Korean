@@ -1,6 +1,6 @@
 # BridgeTTS Korean iOSアプリ（AltStore Classic）
 
-現在は非公開リポジトリでIPAを手動配布しています。韓国語版v2.9.3のActionsビルドは成功し、bundle ID/韓国語Webアセットを確認済み。ソースURLは未公開です。iPhone実インストールと音声動作は未確認です。
+リポジトリを公開し、AltStoreソースとIPAを配布します。韓国語版v2.9.3のActionsビルドは成功し、bundle ID/韓国語Webアセットを確認済み。ソースURLは下記の公開配布手順を参照してください。iPhone実インストールと音声動作は未確認です。
 
 このリポジトリのPWAを、iOSネイティブアプリとしてビルドし、AltStoreでサイドロードするためのガイドです。
 
@@ -60,9 +60,9 @@ cp -R ios/build/Build/Products/Release-iphoneos/BridgeTTS.app ios/build/Payload/
 (cd ios/build && zip -qry BridgeTTS-unsigned.ipa Payload)
 ```
 
-## AltStoreソースからのインストール・更新（公開設定後のみ）
+## AltStoreソースからのインストール・更新（推奨）
 
-現在は利用できません。リポジトリの公開とPages設定、IPA付きRelease公開後に利用する手順です。
+リポジトリを公開し、PagesをActions配信に設定しています。
 
 ソースを登録しておくと、IPAを手動転送せずにAltStoreだけでインストール・更新が完結します。
 
@@ -78,7 +78,7 @@ cp -R ios/build/Build/Products/Release-iphoneos/BridgeTTS.app ios/build/Payload/
 
 ## 更新の受け取り
 
-非公開・手動インストール時は、更新IPAを取得してMy Appsの＋から再インストールします。以下の更新通知はソース公開後の動作です。
+手動インストール時は、更新IPAを取得してMy Appsの＋から再インストールします。以下の更新通知はソース公開後の動作です。
 
 新バージョンの通知は二重化されています。①アプリ内バナー（v2.7.1以降）: 起動時に新版を検知して画面上部に表示、タップでAltStoreへ。②AltStore自身の通知: iPhoneの設定→アプリ→AltStore→「Appのバックグラウンド更新」をONにすると、更新の検知通知と7日署名の自動リフレッシュが働きます。配信の全体像と開発者向け手順は [RELEASE_GUIDE.md](RELEASE_GUIDE.md) を参照。
 
