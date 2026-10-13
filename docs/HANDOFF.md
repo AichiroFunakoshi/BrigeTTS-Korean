@@ -7,7 +7,10 @@
 
 ## ▶️ 現在の最新状態（韓国語版）
 
-- 最終更新: 2026-10-13。正本は https://github.com/AichiroFunakoshi/BrigeTTS-Korean （非公開）。作業フォルダーは `/Users/inaminetetsuo/BrigeTTS-Korean`。
+- AltStore準備（2026-10-13）: main a43d4c6のiOS Actions run 38336729890が成功。未署名IPAの識別子com.a16.bridgetts.korean、表示名、iOS 16.0、ko-KR認識/TTSと한국어ボタンをZIP内で確認。実機インストールは未確認。
+- 非公開リポジトリ・Pages未設定でソース公開runはSetup Pagesで失敗。非公開時は公開ジョブをスキップし、IPA手動導入をREADMEの先頭に案内。ユーザー承認により公開へ切替済み。PagesをActions配信に設定。v2.9.3 IPAのReleaseとソース公開を実施する。
+- AltStoreソースにappPermissionsを追加し、Info.plistからマイク/音声認識の説明を取得。生成ソースと実IPAの権限一致をローカルで検証。
+- 最終更新: 2026-10-13。正本は https://github.com/AichiroFunakoshi/BrigeTTS-Korean （公開）。作業フォルダーは `/Users/inaminetetsuo/BrigeTTS-Korean`。
 - 英語版 `3f290fd`（v2.9.3）をコピーし、日韓版へ変更。言語コードはja/ko、認識はja-JP/ko-KR、TTSは入力言語を渡して内部で相手言語へ反転する。
 - 通常訳・順送り訳・推敲、医療/日常モード、辞書（korean項目・空欄はハングル音訳）、履歴・言語別学習を日韓に対応。言語ボタンは日本語/한국어、韓国語入力中の停止は정지。設定説明とAPI名は日本語/元表記を維持。
 - 保存キーはtranslatorKoreanで独立。設定エクスポート識別子はBridgeTTS-Koreanで、英語版の設定は取り込まない。iOS bundle IDはcom.a16.bridgetts.korean、表示名はBridgeTTS Korean。

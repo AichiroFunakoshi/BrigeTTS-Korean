@@ -3,6 +3,7 @@
 import glob
 import json
 import os
+import plistlib
 import shutil
 import urllib.request
 
@@ -53,6 +54,8 @@ def build_versions(releases):
 
 def main():
     versions = build_versions(fetch_releases())
+    with open('ios/App/Info.plist', 'rb') as f:
+        info = plistlib.load(f)
     source = {
         "name": "BridgeTTS Korean Source",
         "identifier": "com.a16.bridgetts.korean.source",
@@ -68,6 +71,13 @@ def main():
             "iconURL": f"{PAGES_BASE}/icon.png",
             "tintColor": "#4292CD",
             "category": "utilities",
+            "appPermissions": {
+                "entitlements": [],
+                "privacy": {
+                    key: value for key, value in info.items()
+                    if key.startswith('NS') and key.endswith('UsageDescription')
+                },
+            },
             "versions": versions,
         }],
     }

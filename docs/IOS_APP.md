@@ -1,4 +1,6 @@
-# BridgeTTS iOSアプリ（AltStore配布）
+# BridgeTTS Korean iOSアプリ（AltStore Classic）
+
+リポジトリを公開し、AltStoreソースとIPAを配布します。韓国語版v2.9.3のActionsビルドは成功し、bundle ID/韓国語Webアセットを確認済み。ソースURLは下記の公開配布手順を参照してください。iPhone実インストールと音声動作は未確認です。
 
 このリポジトリのPWAを、iOSネイティブアプリとしてビルドし、AltStoreでサイドロードするためのガイドです。
 
@@ -37,7 +39,7 @@
 
 ### 方法2: ローカル（Mac）でビルド
 
-必要なもの: macOS + Xcode 15以降 + [XcodeGen](https://github.com/yonaskolb/XcodeGen)（`brew install xcodegen`）
+必要なもの: macOS + Xcode 16以降 + [XcodeGen](https://github.com/yonaskolb/XcodeGen)（`brew install xcodegen`）
 
 ```bash
 # 1. Webアセットとアイコンを準備
@@ -60,6 +62,8 @@ cp -R ios/build/Build/Products/Release-iphoneos/BridgeTTS.app ios/build/Payload/
 
 ## AltStoreソースからのインストール・更新（推奨）
 
+リポジトリを公開し、PagesをActions配信に設定しています。
+
 ソースを登録しておくと、IPAを手動転送せずにAltStoreだけでインストール・更新が完結します。
 
 1. iPhoneのSafariで https://aichirofunakoshi.github.io/BrigeTTS-Korean/altstore.html を開き「AltStoreにソースを追加」をタップ
@@ -74,6 +78,8 @@ cp -R ios/build/Build/Products/Release-iphoneos/BridgeTTS.app ios/build/Payload/
 
 ## 更新の受け取り
 
+手動インストール時は、更新IPAを取得してMy Appsの＋から再インストールします。以下の更新通知はソース公開後の動作です。
+
 新バージョンの通知は二重化されています。①アプリ内バナー（v2.7.1以降）: 起動時に新版を検知して画面上部に表示、タップでAltStoreへ。②AltStore自身の通知: iPhoneの設定→アプリ→AltStore→「Appのバックグラウンド更新」をONにすると、更新の検知通知と7日署名の自動リフレッシュが働きます。配信の全体像と開発者向け手順は [RELEASE_GUIDE.md](RELEASE_GUIDE.md) を参照。
 
 ## アプリ内エラー報告
@@ -81,7 +87,7 @@ cp -R ios/build/Build/Products/Release-iphoneos/BridgeTTS.app ios/build/Payload/
 アプリ（およびWeb版）でエラーが発生すると「⚠️ エラーを報告」ボタンが表示されます。
 タップするとログ（APIキー等は自動マスク）を確認のうえ送信できます。
 
-- **ネイティブアプリ**: GitHubの[Issues](https://github.com/AichiroFunakoshi/BrigeTTS-Korean/issues)に `error-report` ラベル付きで直接作成されます（アカウント不要・アプリ内完結）
+- **ネイティブアプリ（専用トークンを設定した場合）**: GitHubの[Issues](https://github.com/AichiroFunakoshi/BrigeTTS-Korean/issues)に `error-report` ラベル付きで直接作成されます（アカウント不要・アプリ内完結）
 - **Web/PWA版**: GitHubのIssue作成画面が下書き付きで開きます（GitHubアカウントが必要）
 
 ネイティブアプリの直接送信を有効にするには、リポジトリ管理者が以下を一度だけ設定します:
@@ -137,4 +143,4 @@ cp -R ios/build/Build/Products/Release-iphoneos/BridgeTTS.app ios/build/Payload/
 - **翻訳結果のコピーが効かない**
   → `file://` コンテキストではクリップボードAPIが制限される場合があります
 - **ビルドが失敗する**
-  → Xcodeのバージョン（15以降）と、`ios/App/www/index.html` が存在することを確認してください
+  → Xcodeのバージョン（16以降）と、`ios/App/www/index.html` が存在することを確認してください
