@@ -8,7 +8,7 @@
 ## ▶️ 現在の最新状態（韓国語版）
 
 - AltStore準備（2026-10-13）: main a43d4c6のiOS Actions run 38336729890が成功。未署名IPAの識別子com.a16.bridgetts.korean、表示名、iOS 16.0、ko-KR認識/TTSと한국어ボタンをZIP内で確認。実機インストールは未確認。
-- 非公開リポジトリ・Pages未設定でソース公開runはSetup Pagesで失敗。非公開時は公開ジョブをスキップし、IPA手動導入をREADMEの先頭に案内。ユーザー承認により公開へ切替済み。PagesをActions配信に設定。v2.9.3 IPAのReleaseとソース公開を実施する。
+- 非公開リポジトリ・Pages未設定でソース公開runはSetup Pagesで失敗。非公開時は公開ジョブをスキップし、IPA手動導入をREADMEの先頭に案内。ユーザー承認により公開へ切替済み。PagesをActions配信に設定。v2.9.3 IPAのReleaseとソース公開を実施済み。Pages run 38345140455成功。登録ページ/apps.json/IPAを認証なしで取得し、IPAサイズ864910バイトとSHA-256一致を確認。
 - AltStoreソースにappPermissionsを追加し、Info.plistからマイク/音声認識の説明を取得。生成ソースと実IPAの権限一致をローカルで検証。
 - 最終更新: 2026-10-13。正本は https://github.com/AichiroFunakoshi/BrigeTTS-Korean （公開）。作業フォルダーは `/Users/inaminetetsuo/BrigeTTS-Korean`。
 - 英語版 `3f290fd`（v2.9.3）をコピーし、日韓版へ変更。言語コードはja/ko、認識はja-JP/ko-KR、TTSは入力言語を渡して内部で相手言語へ反転する。
@@ -16,11 +16,11 @@
 - 保存キーはtranslatorKoreanで独立。設定エクスポート識別子はBridgeTTS-Koreanで、英語版の設定は取り込まない。iOS bundle IDはcom.a16.bridgetts.korean、表示名はBridgeTTS Korean。
 - originは韓国語版、upstreamは英語版（push無効）。更新はfetch/status確認後pull --ff-only。実装はcodex/korean-versionブランチからPRで反映。
 - 韓国語デバウンスは346msの暫定値。英語版の154msや改善率は韓国語の実測値ではない。
-- 配信URL・レポート送信先を韓国語リポジトリへ変更。GitHub Pages公開、IPAビルド/署名/リリースは未実施。コピー元のトークンは転用していない。韓国語版のERROR_REPORT_TOKEN未設定時はIssue下書き画面を開く既存方式。
+- 配信URL・レポート送信先を韓国語リポジトリへ変更。GitHub Pages公開・IPAビルド・v2.9.3リリースは実施済み。Apple ID署名・iPhone実インストールは利用者側で未確認。コピー元のトークンは転用していない。韓国語版のERROR_REPORT_TOKEN未設定時はIssue下書き画面を開く既存方式。
 - 韓国語SWは韓国語版の古いキャッシュだけを削除。英語版SWには他アプリのキャッシュを削除する既存処理があるため、同一オリジンでの相互のオフライン維持は未保証。
 - 検証: Playwright 19/19成功（API・認識・TTSはモック）、画面画像の表示確認、別エージェントの静的レビュー（履歴方向/キャッシュ削除を修正）。変更JS構文、軽量ESLint/Stylelint、plist検証、日韓eval 12件/順送り5件のdry-run。実API翻訳品質、iPhone Safari/WKWebView認識・音声再生・ネイティブビルドは未確認。
 - TTS: 前段でMacのYuna ko_KRによる3.71秒の音声生成を確認。自動テストのTTSはモックであり実音声の品質確認ではない。
-- 次の確認: PRの反映、利用者のキーを設定した実翻訳、iPhoneで日韓の認識/読み上げ/連続ターン。韓国語版用の配信設定は公開するときに整える。
+- 次の確認: AltStoreソースからの実機インストール、利用者のキーを設定した実翻訳、iPhoneで日韓の認識/読み上げ/連続ターン。公開配信設定は完了。実機のインストール・更新動作は未確認。
 - PR #1のCI修正: 韓国語テスト画像の保存先を`testInfo.outputPath('korean-ui.png')`へ変更。CodeRabbitはFreeプランの要約のみで、行単位のレビュー指摘はない。
 
 以下はコピー元英語版の履歴・設計資料。旧リリース、Issue番号、安定版タグ、品質数値は韓国語版の現在状態ではない。
