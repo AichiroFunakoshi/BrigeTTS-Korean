@@ -104,7 +104,7 @@ test('Korean service worker preserves other apps caches', async () => {
     vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../sw.js'), 'utf8'), {
         self: { addEventListener(name, callback) { listeners[name] = callback; }, clients: { claim() {} } },
         caches: {
-            keys: async () => ['bridge-tts-codex-v28', 'bridge-tts-korean-v0', 'bridge-tts-korean-v1', 'other-app'],
+            keys: async () => ['bridge-tts-codex-v28', 'bridge-tts-korean-v0', 'bridge-tts-korean-v2', 'other-app'],
             delete: async (name) => { deleted.push(name); }
         }
     });

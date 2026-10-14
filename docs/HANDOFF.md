@@ -7,6 +7,8 @@
 
 ## ▶️ 現在の最新状態（韓国語版）
 
+- 2026-10-14アイコン更新: 英語版/Nepali版のGitHub最新アイコンを参照し、「가 ↔ あ」に変更。1024px原本とPWA6サイズをRGB/アルファなしで保存。キャッシュv2へ更新。19件のスモークテスト成功。アイコン更新版v2.9.4のリリース準備。版数をpackage/lock/iOS/画面/テストで同期。
+
 - AltStore準備（2026-10-13）: main a43d4c6のiOS Actions run 38336729890が成功。未署名IPAの識別子com.a16.bridgetts.korean、表示名、iOS 16.0、ko-KR認識/TTSと한국어ボタンをZIP内で確認。実機インストールは未確認。
 - 非公開リポジトリ・Pages未設定でソース公開runはSetup Pagesで失敗。非公開時は公開ジョブをスキップし、IPA手動導入をREADMEの先頭に案内。ユーザー承認により公開へ切替済み。PagesをActions配信に設定。v2.9.3 IPAのReleaseとソース公開を実施済み。Pages run 38345140455成功。登録ページ/apps.json/IPAを認証なしで取得し、IPAサイズ864910バイトとSHA-256一致を確認。
 - AltStoreソースにappPermissionsを追加し、Info.plistからマイク/音声認識の説明を取得。生成ソースと実IPAの権限一致をローカルで検証。

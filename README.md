@@ -6,7 +6,7 @@
 
 ## AltStoreでインストール
 
-**AltStore Classicを使用します。** 韓国語版v2.9.3の未署名IPAを配布します。英語版とは別アプリとしてインストールできます。
+**AltStore Classicを使用します。** 韓国語版v2.9.4の未署名IPAを配布します。英語版とは別アプリとしてインストールできます。
 
 1. iPhoneのSafariで[AltStore登録ページ](https://aichirofunakoshi.github.io/BrigeTTS-Korean/altstore.html)を開き、「AltStoreにソースを追加」をタップします。
 2. またはAltStoreのSources → ＋に `https://aichirofunakoshi.github.io/BrigeTTS-Korean/apps.json` を登録します。
