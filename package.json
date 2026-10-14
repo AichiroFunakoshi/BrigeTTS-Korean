@@ -1,6 +1,6 @@
 {
   "name": "bridge-tts-korean",
-  "version": "2.9.3",
+  "version": "2.9.4",
   "private": true,
   "description": "日韓リアルタイム音声翻訳（PWA + iOSネイティブアプリ）",
   "main": "app.js",
