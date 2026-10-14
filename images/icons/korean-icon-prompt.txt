@@ -1,0 +1,15 @@
+Edit target: Image 1 is the English BridgeTTS icon. Image 2 is the Nepali edition reference confirming the shared logo system. Produce the Korean edition of Image 1, keeping the exact same square composition, blue background gradient, navy shapes, outlined rounded boxes, two opposing arrows, Japanese あ in the right box, microphone and bottom waves. Replace only the Latin A inside the LEFT upper rounded box with a bold, clear Korean Hangul syllable "가", sized and centered to match the original A's visual weight. Exact text: left "가", right "あ". No other text, no English words, no border around the canvas, no mockup. Keep every element's geometry and position unchanged, aside from the replaced character. Remove accidental scratches/microtexture on the navy wave shapes; otherwise preserve design. Output a square icon suitable for 1024x1024 app assets.
+
+IMAGE QUALITY — SUPPRESS UNINTENDED MESH AND MICROTEXTURE
+
+Apply this quality requirement while preserving the requested subject, identity, anatomy, clothing, composition, lighting, colors, text, and visual medium. In edits, preserve all content outside the requested changes.
+
+Render clean, continuous tonal transitions. Do not synthesize an image-wide pale mesh, fine worm-like or woven surface relief, crosshatching, repeated tiny ridges, or embossed microtexture as a substitute for realism. Do not preserve these artifacts from a reference image.
+
+For photographic rendering, use strong luminance-and-chroma noise suppression ONLY on fine, low-contrast surface fluctuations. Give skin broad, continuous tonal transitions with very low microcontrast. Preserve actual identifying marks and facial contours, but do not add synthetic pores, tiny ridges, stippling, or skin grain. Smooth surfaces such as painted walls and curtains should have clean, gently varying tones without invented fine surface relief.
+
+Retain coherent hair edges and major strands, eyes, eyelashes, lips, garment seams, clearly defined large folds, legible text, and genuine material structure. Confine fabric weave, ribbing, and other intentional textures to the objects that actually have them; never spread them across skin or unrelated surfaces. Preserve deliberately requested artistic textures and styles while removing only unintended global artifacts.
+
+Avoid added film grain, simulated sensor noise, compression degradation, edge enhancement, clarity enhancement, texture enhancement, and artificial detail reconstruction unless explicitly requested for this image. Do not merely lower the resolution, blur the whole image, reshape the face, or erase meaningful detail. If invented tiny skin texture conflicts with removing the unwanted pattern, prioritize removing the pattern.
+
+Use references for the requested identity, geometry, design, and style, not for accidental raster noise or baked-in surface artifacts. Produce a single clean, fully opaque image without alpha transparency by default. If transparency is explicitly required, preserve the requested alpha and apply these quality requirements to visible image content.

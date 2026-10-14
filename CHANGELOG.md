@@ -7,6 +7,9 @@
 
 ## [Unreleased]
 
+### アイコン
+- 英語版/Nepali版と共通の「言語文字 ↔ あ・マイク・波形」を韓国語「가」で統一。PWA全サイズとiOS/AltStore原本を更新。
+
 ### AltStore公開配布
 - 韓国語版の公開リポジトリ・AltStoreソース・IPA配布の導入手順をREADME/手順書に反映。手動導入の手順も維持。
 - AltStoreのappPermissionsをInfo.plistと整合。非公開時はPages公開ジョブをスキップ。
